@@ -48,3 +48,10 @@ def test_update_user(client):
         'username': 'mari',
         'email': 'mari@example.com',
     }
+
+
+def test_delete_user(client):
+    response = client.delete('users/1')
+
+    assert response.status_code == HTTPStatus.OK
+    assert response.json() == {'message': 'User deleted'}
